@@ -18,6 +18,11 @@ public class QuickSort<T extends Comparable<T>> {
 		
 	}
 	
+	private void swap(T[]ar, int i, int j) {
+		T tmp = ar[i];
+		ar[i] = ar[j];
+		ar[j] = tmp;
+	}
 	private int partition(T[]ar, int lo, int hi) {
 		T v = ar[lo];
 		int i = lo;
@@ -33,12 +38,9 @@ public class QuickSort<T extends Comparable<T>> {
 			}
 			if(i >= j)
 				break;
-			T tmp = ar[i];
-			ar[i] = ar[j];
-			ar[j] = tmp;
+			swap(ar, i, j);
 		}
-		ar[lo] = ar[j];
-		ar[j] = v;
+		swap(ar, lo, j);
 		//System.out.printf("lo:%d hi:%d j:%d\n", lo, hi, j);
 		//print(ar);
 		return j;
